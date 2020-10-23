@@ -2,26 +2,26 @@ import { RootState } from "store";
 import { Reducer } from "redux";
 import { Property } from "types/common";
 import { ThunkAction } from "redux-thunk";
-import dataSource from 'data/dataSource';
+import dataSource from "data/dataSource";
 
 export interface PropertiesState {
   properties: Property[];
 }
 
 const defaultState: PropertiesState = {
-    properties: [],
+  properties: [],
 };
 
 const Actions = {
   setProperties: "propertiesModule/setProperties",
 } as const;
 
-interface SetCurrencyRate {
+interface SetProperties {
   type: typeof Actions.setProperties;
   payload: Property[];
 }
 
-type Actions = SetCurrencyRate;
+type Actions = SetProperties;
 
 const reducer: Reducer<PropertiesState, Actions> = (
   state = defaultState,
@@ -52,31 +52,29 @@ const setProperties = (properties: Property[]): ThunkResult<void> => (
 ) => {
   dispatch({
     type: Actions.setProperties,
-    payload: properties
+    payload: properties,
   });
 };
 
 const loadProperties = (): ThunkResult<Promise<void>> => (dispatch) => {
   return dataSource.loadProperties().then(
     (data) => {
-      if(data) {
-        dispatch(
-          setProperties(data),
-        );
+      if (data) {
+        dispatch(setProperties(data));
       }
     },
     (error) => {
       console.error(error);
-    },
+    }
   );
-}
+};
 
 export default {
   reducer,
   actions: {
-    loadProperties
+    loadProperties,
   },
   selectors: {
-    getProperties
-  }
+    getProperties,
+  },
 };
