@@ -79,34 +79,41 @@ const getBathroomsQuantity = (state: RootState) =>
 //============== ACTIONS ================
 export type ThunkResult<R> = ThunkAction<R, RootState, void, Actions>;
 
-const setProperties = (properties: Property[]): ThunkResult<void> => (
+const setPropertyType = (propertyType: string): ThunkResult<void> => (
   dispatch
 ) => {
   dispatch({
-    type: Actions.setProperties,
-    payload: properties,
+    type: Actions.setPropertyType,
+    payload: propertyType,
+  });
+};
+const setBedroomsQuantity = (bedroomsQuantity: string) => (
+  dispatch: any
+) => {
+  dispatch({
+    type: Actions.setBedroomsQuantity,
+    payload: bedroomsQuantity,
   });
 };
 
-const loadProperties = (): ThunkResult<Promise<void>> => (dispatch) => {
-  return dataSource.loadProperties().then(
-    (data) => {
-      if (data) {
-        dispatch(setProperties(data));
-      }
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
+const setBathroomsQuantity = (bathroomsQuantity: string) => (
+  dispatch: any
+) => {
+  dispatch({
+    type: Actions.setBathroomsQuantity,
+    payload: bathroomsQuantity,
+  });
 };
-
 export default {
   reducer,
   actions: {
-    loadProperties,
+    setPropertyType,
+    setBedroomsQuantity,
+    setBathroomsQuantity
   },
   selectors: {
-    getProperties,
+    getPropertyType,
+    getBedroomsQuantity,
+    getBathroomsQuantity
   },
 };

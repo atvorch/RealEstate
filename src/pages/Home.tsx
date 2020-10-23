@@ -39,11 +39,6 @@ export const Main: React.FC<StateProps & ReduxProps> = ({
   return (
     <Wrapper>
       <Filters />
-
-      {properties &&
-        properties.map((item: Property) => {
-          return <span>{item.address}</span>;
-        })}
     </Wrapper>
   );
 };

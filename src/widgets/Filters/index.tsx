@@ -6,17 +6,57 @@ import {
 import React from "react";
 import Filter from "components/Filter";
 import styled from "styled-components";
+import { RootState } from "store";
+import filters from "store/modules/filters";
+import { ConnectedProps, connect } from "react-redux";
 
 const Wrapper = styled.div``;
 
-export const Filters: React.FC = () => {
+const connector = connect(
+  (state: RootState) => ({
+    propertyType: filters.selectors.getPropertyType(state),
+    bedroomsQuantity: filters.selectors.getBedroomsQuantity(state),
+    bathroomsQuantity: filters.selectors.getBathroomsQuantity(state),
+  }),
+  {
+    setPropertyType: filters.actions.setPropertyType,
+    setBathroomsQuantity: filters.actions.setBathroomsQuantity,
+    setBedroomsQuantity: filters.actions.setBedroomsQuantity,
+  }
+);
+
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export const Filters: React.FC<ReduxProps> = ({
+  propertyType,
+  bedroomsQuantity,
+  bathroomsQuantity,
+  setPropertyType,
+  setBathroomsQuantity,
+  setBedroomsQuantity,
+}) => {
   return (
     <Wrapper>
-      <Filter title="Property Type" options={PROPERTY_TYPE_OPTIONS} />
-      <Filter title="Bedrooms" options={BATHS_OPTIONS} />
-      <Filter title="Bathrooms" options={BEDS_OPTIONS} />
+      <Filter
+        title="Property Type"
+        options={PROPERTY_TYPE_OPTIONS}
+        onChange={setPropertyType}
+        selected={propertyType}
+      />
+      <Filter
+        title="Bedrooms"
+        options={BATHS_OPTIONS}
+        onChange={setBedroomsQuantity}
+        selected={bedroomsQuantity}
+      />
+      <Filter
+        title="Bathrooms"
+        options={BEDS_OPTIONS}
+        onChange={setBathroomsQuantity}
+        selected={bathroomsQuantity}
+      />
     </Wrapper>
   );
 };
 
-export default Filters;
+export default connector(Filters);
