@@ -1,4 +1,4 @@
-import { Property } from "types/common";
+import { Property } from "data/types";
 import Papa from 'papaparse';
 
 const PROPERTIES_CSV_PATH = "data.csv";

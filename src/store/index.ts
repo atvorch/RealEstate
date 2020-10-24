@@ -1,16 +1,19 @@
 import { composeWithDevTools } from "redux-devtools-extension";
-import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import properties from './modules/properties';
-import filters from './modules/filters';
+import properties, { PropertiesState } from "./modules/properties";
+import filters, { FiltersState } from "./modules/filters";
+import { createStore, applyMiddleware, combineReducers, Reducer } from "redux";
 
-export const rootReducer: any = combineReducers({
+export interface RootState {
+  properties: PropertiesState;
+  filters: FiltersState;
+}
+
+export const rootReducer: Reducer<RootState> = combineReducers<RootState>({
   properties: properties.reducer,
-  filters: filters.reducer
+  filters: filters.reducer,
 });
 
 export function initStore() {
   return createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 }
-
-export type RootState = ReturnType<typeof rootReducer>;

@@ -1,19 +1,19 @@
 import { RootState } from "store";
 import { Reducer } from "redux";
-import { Property } from "types/common";
+import { Property } from "data/types";
 import { ThunkAction } from "redux-thunk";
 import dataSource from "data/dataSource";
 
 export interface FiltersState {
   propertyType: string;
-  bedroomsQuantity: number | null;
-  bathroomsQuantity: number | null;
+  bedroomsQuantity: string;
+  bathroomsQuantity: string;
 }
 
 const defaultState: FiltersState = {
   propertyType: "",
-  bedroomsQuantity: null,
-  bathroomsQuantity: null,
+  bedroomsQuantity: "",
+  bathroomsQuantity: "",
 };
 
 const Actions = {
@@ -29,12 +29,12 @@ interface SetPropertyType {
 
 interface SetBedroomsQuantity {
   type: typeof Actions.setBedroomsQuantity;
-  payload: number;
+  payload: string;
 }
 
 interface SetBathroomsQuantity {
   type: typeof Actions.setBathroomsQuantity;
-  payload: number;
+  payload: string;
 }
 
 type Actions = SetPropertyType | SetBedroomsQuantity | SetBathroomsQuantity;
@@ -87,18 +87,14 @@ const setPropertyType = (propertyType: string): ThunkResult<void> => (
     payload: propertyType,
   });
 };
-const setBedroomsQuantity = (bedroomsQuantity: string) => (
-  dispatch: any
-) => {
+const setBedroomsQuantity = (bedroomsQuantity: string) => (dispatch: any) => {
   dispatch({
     type: Actions.setBedroomsQuantity,
     payload: bedroomsQuantity,
   });
 };
 
-const setBathroomsQuantity = (bathroomsQuantity: string) => (
-  dispatch: any
-) => {
+const setBathroomsQuantity = (bathroomsQuantity: string) => (dispatch: any) => {
   dispatch({
     type: Actions.setBathroomsQuantity,
     payload: bathroomsQuantity,
@@ -109,11 +105,11 @@ export default {
   actions: {
     setPropertyType,
     setBedroomsQuantity,
-    setBathroomsQuantity
+    setBathroomsQuantity,
   },
   selectors: {
     getPropertyType,
     getBedroomsQuantity,
-    getBathroomsQuantity
+    getBathroomsQuantity,
   },
 };

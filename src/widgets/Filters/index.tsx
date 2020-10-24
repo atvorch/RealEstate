@@ -4,13 +4,10 @@ import {
   BEDS_OPTIONS,
 } from "data/constants";
 import React from "react";
-import Filter from "components/Filter";
-import styled from "styled-components";
 import { RootState } from "store";
 import filters from "store/modules/filters";
 import { ConnectedProps, connect } from "react-redux";
-
-const Wrapper = styled.div``;
+import * as Styled from "./styled";
 
 const connector = connect(
   (state: RootState) => ({
@@ -36,26 +33,29 @@ export const Filters: React.FC<ReduxProps> = ({
   setBedroomsQuantity,
 }) => {
   return (
-    <Wrapper>
-      <Filter
-        title="Property Type"
-        options={PROPERTY_TYPE_OPTIONS}
-        onChange={setPropertyType}
-        selected={propertyType}
-      />
-      <Filter
-        title="Bedrooms"
-        options={BATHS_OPTIONS}
-        onChange={setBedroomsQuantity}
-        selected={bedroomsQuantity}
-      />
-      <Filter
-        title="Bathrooms"
-        options={BEDS_OPTIONS}
-        onChange={setBathroomsQuantity}
-        selected={bathroomsQuantity}
-      />
-    </Wrapper>
+    <Styled.Wrapper>
+      <Styled.Title>Filter</Styled.Title>
+      <Styled.FiltersWrapper>
+        <Styled.Filter
+          title="Property Type"
+          options={PROPERTY_TYPE_OPTIONS}
+          onChange={setPropertyType}
+          selected={propertyType}
+        />
+        <Styled.Filter
+          title="Bedrooms"
+          options={BATHS_OPTIONS}
+          onChange={setBedroomsQuantity}
+          selected={bedroomsQuantity}
+        />
+        <Styled.Filter
+          title="Bathrooms"
+          options={BEDS_OPTIONS}
+          onChange={setBathroomsQuantity}
+          selected={bathroomsQuantity}
+        />
+      </Styled.FiltersWrapper>
+    </Styled.Wrapper>
   );
 };
 

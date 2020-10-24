@@ -5,6 +5,7 @@ interface Filter {
   options: string[];
   selected?: string;
   onChange: (option: string) => void;
+  className?: string;
 }
 
 export const Filter: React.FC<Filter> = ({
@@ -12,16 +13,19 @@ export const Filter: React.FC<Filter> = ({
   options,
   selected,
   onChange,
+  className,
 }) => {
   const changeOptionHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     onChange(event.target.value);
   };
 
   return (
-    <select onChange={changeOptionHandler} value={selected || "default"}>
-      <option value="default" disabled>
-        {title}
-      </option>
+    <select
+      className={className}
+      onChange={changeOptionHandler}
+      value={selected || ""}
+    >
+      <option value="">{title}</option>
       {options.map((opt) => {
         return (
           <option value={opt} key={`select-${title}-${opt}`}>

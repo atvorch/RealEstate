@@ -1,9 +1,14 @@
-export const PROPERTY_TYPE_OPTIONS = [
-  "Apartment",
-  "Terraced",
-  "Detached",
-  "Semi-detached",
-];
+import { PROPERTY_TYPE } from "./types";
+
+export const PROPERTY_TYPE_OPTIONS = Object.values(PROPERTY_TYPE);
+
+export const PropertyColors = {
+  [PROPERTY_TYPE.Apartment.toLowerCase()]: "gray",
+  [PROPERTY_TYPE.Terraced.toLowerCase()]: "green",
+  [PROPERTY_TYPE.Detached.toLowerCase()]: "red",
+  [PROPERTY_TYPE.SemiDetached.toLowerCase()]: "orange",
+} as const;
+
 export const BEDS_OPTIONS = ["1", "2", "3", "4", "5", "6", "7", "8"] as const;
 export const BATHS_OPTIONS = ["1", "2", "3", "4", "5", "6"] as const;
 
