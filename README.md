@@ -1,6 +1,9 @@
 # RealEstate:
 
-### To run: `npm start`
+### To run project: 
+ 1.`npm i`
+ 2.`npm start`
+ 
 ### To See: https://atvorch.github.io/RealEstate/
 
 ### What I haven't done but really wanted:
