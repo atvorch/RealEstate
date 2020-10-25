@@ -7,9 +7,10 @@ interface OwnProps {
   lng: string;
   color: string;
   onClick: () => void;
+  selected?: boolean;
 }
 
-const MarkerUI = styled.div<{ color: string }>`
+const MarkerUI = styled.div<{ color: string; selected?: boolean }>`
   border-radius: 100%;
   background-color: ${(props) => props.color};
   width: 20px;
@@ -21,14 +22,22 @@ const MarkerUI = styled.div<{ color: string }>`
   padding: 0;
   color: white;
   cursor: pointer;
+  transition: 0.5s;
   &:hover {
-    transform: scale(1);
+    transform: scale(1.2);
   }
+  box-shadow: ${(props) =>
+    props.selected ? "0 0 11px 10px #2fd4c9;" : "none"};
 `;
 
-export const Marker: React.FC<OwnProps> = ({ number, onClick, color }) => {
+export const Marker: React.FC<OwnProps> = ({
+  number,
+  onClick,
+  color,
+  selected,
+}) => {
   return (
-    <MarkerUI color={color} onClick={onClick}>
+    <MarkerUI color={color} onClick={onClick} selected={selected}>
       {number}
     </MarkerUI>
   );

@@ -2,12 +2,12 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://atvorch.github.io/RealEstate/.",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/google-map-react": "^2.1.0",
-    "@types/googlemaps": "^3.40.1",
     "@types/jest": "^24.9.1",
     "@types/lodash": "^4.14.162",
     "@types/node": "^12.12.69",
@@ -17,12 +17,13 @@
     "@types/react-redux": "^7.1.9",
     "@types/styled-components": "^5.1.4",
     "google-map-react": "^2.1.8",
-    "lodash": "^4.17.20",
     "papaparse": "^5.3.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-minimal-pie-chart": "^8.0.1",
     "react-redux": "^7.2.1",
     "react-scripts": "3.4.3",
+    "recompose": "^0.30.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
@@ -33,7 +34,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

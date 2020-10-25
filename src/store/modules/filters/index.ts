@@ -1,9 +1,7 @@
 import { RootState } from "store";
 import { Reducer } from "redux";
-import { Property } from "data/types";
 import { ThunkAction } from "redux-thunk";
-import dataSource from "data/dataSource";
-
+import properties from "store/modules/properties";
 export interface FiltersState {
   propertyType: string;
   bedroomsQuantity: string;
@@ -76,6 +74,9 @@ const getBedroomsQuantity = (state: RootState) =>
 const getBathroomsQuantity = (state: RootState) =>
   getLocalState(state).bathroomsQuantity;
 
+const getAllFilters = (state: RootState): FiltersState => {
+  return getLocalState(state);
+};
 //============== ACTIONS ================
 export type ThunkResult<R> = ThunkAction<R, RootState, void, Actions>;
 
@@ -86,12 +87,15 @@ const setPropertyType = (propertyType: string): ThunkResult<void> => (
     type: Actions.setPropertyType,
     payload: propertyType,
   });
+  dispatch(properties.actions.refreshSelectedProperty());
 };
+
 const setBedroomsQuantity = (bedroomsQuantity: string) => (dispatch: any) => {
   dispatch({
     type: Actions.setBedroomsQuantity,
     payload: bedroomsQuantity,
   });
+  dispatch(properties.actions.refreshSelectedProperty());
 };
 
 const setBathroomsQuantity = (bathroomsQuantity: string) => (dispatch: any) => {
@@ -99,7 +103,9 @@ const setBathroomsQuantity = (bathroomsQuantity: string) => (dispatch: any) => {
     type: Actions.setBathroomsQuantity,
     payload: bathroomsQuantity,
   });
+  dispatch(properties.actions.refreshSelectedProperty());
 };
+
 export default {
   reducer,
   actions: {
@@ -108,6 +114,7 @@ export default {
     setBathroomsQuantity,
   },
   selectors: {
+    getAllFilters,
     getPropertyType,
     getBedroomsQuantity,
     getBathroomsQuantity,

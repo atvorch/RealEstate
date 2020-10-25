@@ -3,6 +3,9 @@ import { Reducer } from "redux";
 import { Property } from "data/types";
 import { ThunkAction } from "redux-thunk";
 import dataSource from "data/dataSource";
+import filters from "store/modules/filters";
+
+import { filterProperties } from "../properties/utils";
 
 export interface PropertiesState {
   properties: Property[];
@@ -11,8 +14,7 @@ export interface PropertiesState {
 
 const defaultState: PropertiesState = {
   properties: [],
-  selectedPropertyId:
-    "120 SHEELIN GROVE BALLYBRACK GLENAGEARY CO. DUBLIN A96 V2T6",
+  selectedPropertyId: "",
 };
 
 const Actions = {
@@ -48,6 +50,7 @@ const reducer: Reducer<PropertiesState, Actions> = (
         selectedPropertyId: action.payload,
       };
     }
+
     default:
       return state;
   }
@@ -57,6 +60,16 @@ const reducer: Reducer<PropertiesState, Actions> = (
 
 const getLocalState = (state: RootState): PropertiesState => state.properties;
 const getProperties = (state: RootState) => getLocalState(state).properties;
+const getFilteredProperties = (state: RootState) => {
+  const filteredProperties = filterProperties(
+    getProperties(state),
+    filters.selectors.getAllFilters(state)
+  );
+  return filteredProperties;
+};
+const getSelectedPropertyId = (state: RootState) =>
+  getLocalState(state).selectedPropertyId;
+
 const getSelectedProperty = (state: RootState) => {
   const localState = getLocalState(state);
   return localState.properties.find(
@@ -75,6 +88,7 @@ const setProperties = (properties: Property[]): ThunkResult<void> => (
     payload: properties,
   });
 };
+
 const setSelectedPropertyId = (id: string): ThunkResult<void> => (dispatch) => {
   dispatch({
     type: Actions.setSelectedPropertyId,
@@ -95,14 +109,25 @@ const loadProperties = (): ThunkResult<Promise<void>> => (dispatch) => {
   );
 };
 
+const refreshSelectedProperty = (): ThunkResult<void> => (dispatch, state) => {
+  const filtered = getFilteredProperties(state());
+  const selectedId = getSelectedPropertyId(state());
+  if (selectedId && !filtered.some((prop) => prop.address === selectedId)) {
+    dispatch(setSelectedPropertyId(""));
+  }
+};
+
 export default {
   reducer,
   actions: {
     loadProperties,
     setSelectedPropertyId,
+    refreshSelectedProperty,
   },
   selectors: {
     getProperties,
+    getFilteredProperties,
     getSelectedProperty,
+    getSelectedPropertyId,
   },
 };

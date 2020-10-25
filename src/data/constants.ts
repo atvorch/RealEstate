@@ -2,10 +2,11 @@ import { PROPERTY_TYPE } from "./types";
 
 export const PROPERTY_TYPE_OPTIONS = Object.values(PROPERTY_TYPE);
 
-export const PropertyColors = {
-  [PROPERTY_TYPE.Apartment.toLowerCase()]: "gray",
-  [PROPERTY_TYPE.Terraced.toLowerCase()]: "green",
-  [PROPERTY_TYPE.Detached.toLowerCase()]: "red",
+//I have randomly selected color for each property type
+export const PROPERTY_COLORS = {
+  [PROPERTY_TYPE.Apartment.toLowerCase()]: "#8479f9",
+  [PROPERTY_TYPE.Terraced.toLowerCase()]: "#fb68c3",
+  [PROPERTY_TYPE.Detached.toLowerCase()]: "#0DAD8D",
   [PROPERTY_TYPE.SemiDetached.toLowerCase()]: "orange",
 } as const;
 
@@ -18,6 +19,7 @@ export default {
   BATHS_OPTIONS,
 };
 
+//It is not secure but for the test project I think it's not a big deal
 export const GOOGLE_MAPS_API_KEY = "AIzaSyDCMkF1zGMrDg0wIKFLzBoCp6tTibJQ7-k";
 
 export const STREET_VIEW_LINK_TEMPLATE =

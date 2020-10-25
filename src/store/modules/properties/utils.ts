@@ -1,10 +1,13 @@
 import { Property } from "data/types";
+import { FiltersState } from "../filters";
 
 export const filterProperties = (
   properties: Property[] = [],
-  propertyType = "",
-  bedroomsQuantity = "",
-  bathroomsQuantity = ""
+  {
+    propertyType = "",
+    bedroomsQuantity = "",
+    bathroomsQuantity = "",
+  }: FiltersState
 ): Property[] => {
   let filteredProperties: Property[] = [...properties];
 

@@ -11,7 +11,6 @@ export const FiltersWrapper = styled.div`
   align-items: center;
 `;
 export const Title = styled.span`
-  font-family: monospace;
   color: #3e88e4;
   font-size: 24px;
 `;

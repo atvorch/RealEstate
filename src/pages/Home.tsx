@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import * as Styled from "./styled";
 import properties from "store/modules/properties";
 import { connect, ConnectedProps } from "react-redux";
 import { RootState } from "store";
@@ -7,19 +7,8 @@ import { Property } from "data/types";
 import Filters from "widgets/Filters";
 import Map from "widgets/Map";
 import PropertyDetails from "widgets/PropertyDetails";
+import PropertiesChart from "widgets/PropertiesChart";
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 20px 20px 20px 50px;
-  box-sizing: border-box;
-`;
-export const ContentWrapper = styled.main`
-  display: flex;
-  height: 100%;
-`;
 interface StateProps {
   properties: Property[];
 }
@@ -45,15 +34,19 @@ export const Main: React.FC<StateProps & ReduxProps> = ({
   }, [properties, loadProperties]);
 
   return (
-    <Wrapper>
-      <header>
-        <Filters />
-      </header>
-      <ContentWrapper>
-        <PropertyDetails />
+    <Styled.Wrapper>
+      <PropertyDetails />
+      <Styled.Content>
+        <Styled.Header>
+          <Filters />
+          <Styled.ChartWrapper>
+            <PropertiesChart />
+            <Styled.ColorPallet />
+          </Styled.ChartWrapper>
+        </Styled.Header>
         <Map />
-      </ContentWrapper>
-    </Wrapper>
+      </Styled.Content>
+    </Styled.Wrapper>
   );
 };
 
