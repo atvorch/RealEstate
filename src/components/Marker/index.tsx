@@ -5,9 +5,8 @@ interface OwnProps {
   number: number;
   lat: string;
   lng: string;
-  propertyId: number;
   color: string;
-  onClick: (propertyId: number) => void;
+  onClick: () => void;
 }
 
 const MarkerUI = styled.div<{ color: string }>`
@@ -22,16 +21,14 @@ const MarkerUI = styled.div<{ color: string }>`
   padding: 0;
   color: white;
   cursor: pointer;
+  &:hover {
+    transform: scale(1);
+  }
 `;
 
-export const Marker: React.FC<OwnProps> = ({
-  number,
-  onClick,
-  propertyId,
-  color,
-}) => {
+export const Marker: React.FC<OwnProps> = ({ number, onClick, color }) => {
   return (
-    <MarkerUI color={color} onClick={() => onClick(propertyId)}>
+    <MarkerUI color={color} onClick={onClick}>
       {number}
     </MarkerUI>
   );

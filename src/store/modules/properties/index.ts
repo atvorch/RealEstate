@@ -45,7 +45,7 @@ const reducer: Reducer<PropertiesState, Actions> = (
     case Actions.setSelectedPropertyId: {
       return {
         ...state,
-        setSelectedPropertyId: action.payload,
+        selectedPropertyId: action.payload,
       };
     }
     default:

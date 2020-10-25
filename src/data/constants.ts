@@ -17,3 +17,8 @@ export default {
   BEDS_OPTIONS,
   BATHS_OPTIONS,
 };
+
+export const GOOGLE_MAPS_API_KEY = "AIzaSyDCMkF1zGMrDg0wIKFLzBoCp6tTibJQ7-k";
+
+export const STREET_VIEW_LINK_TEMPLATE =
+  "https://maps.googleapis.com/maps/api/streetview?fov=80&heading=70&pitch=0&key=AIzaSyDCMkF1zGMrDg0wIKFLzBoCp6tTibJQ7-k&size=400x400";

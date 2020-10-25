@@ -8,25 +8,31 @@ import properties from "store/modules/properties";
 import { uniqueId } from "lodash";
 import { Property } from "data/types";
 import { filterProperties } from "./utils";
-import { PropertyColors } from "data/constants";
+import { PropertyColors, GOOGLE_MAPS_API_KEY } from "data/constants";
 
-const connector = connect((state: RootState) => ({
-  properties: properties.selectors.getProperties(state),
-  propertyType: filters.selectors.getPropertyType(state),
-  bedroomsQuantity: filters.selectors.getBedroomsQuantity(state),
-  bathroomsQuantity: filters.selectors.getBathroomsQuantity(state),
-}));
+const connector = connect(
+  (state: RootState) => ({
+    properties: properties.selectors.getProperties(state),
+    propertyType: filters.selectors.getPropertyType(state),
+    bedroomsQuantity: filters.selectors.getBedroomsQuantity(state),
+    bathroomsQuantity: filters.selectors.getBathroomsQuantity(state),
+  }),
+  {
+    setSelectedPropertyId: properties.actions.setSelectedPropertyId,
+  }
+);
 
 type ReduxProps = ConnectedProps<typeof connector>;
 
 const DUBLIN_GEPOSITION = { lat: 53.35014, lng: -6.266155 };
-const DEFAULT_ZOOM = 11;
+const DEFAULT_ZOOM = 12;
 
 export const Map: React.FC<ReduxProps> = ({
   properties,
   propertyType,
   bedroomsQuantity,
   bathroomsQuantity,
+  setSelectedPropertyId,
 }) => {
   const map = React.useRef<any>(null);
   const [center, setCenter] = React.useState(DUBLIN_GEPOSITION);
@@ -68,7 +74,7 @@ export const Map: React.FC<ReduxProps> = ({
     <div style={{ flexGrow: 1, width: "100%" }}>
       <GoogleMapReact
         ref={map}
-        bootstrapURLKeys={{ key: "AIzaSyDCMkF1zGMrDg0wIKFLzBoCp6tTibJQ7-k" }}
+        bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
         defaultCenter={DUBLIN_GEPOSITION}
         defaultZoom={DEFAULT_ZOOM}
         onGoogleApiLoaded={({ map, maps }) => googleApiOnLoadHandler(map, maps)}
@@ -80,9 +86,8 @@ export const Map: React.FC<ReduxProps> = ({
                   key={uniqueId("marker")}
                   lat={prop.lat}
                   lng={prop.lon}
-                  onClick={() => null}
+                  onClick={() => setSelectedPropertyId(prop.address)}
                   number={index + 1}
-                  propertyId={1}
                   color={PropertyColors[prop.propertyType.toLowerCase()]}
                 />
               );

@@ -5,7 +5,7 @@ export const filterProperties = (
   propertyType = "",
   bedroomsQuantity = "",
   bathroomsQuantity = ""
-) => {
+): Property[] => {
   let filteredProperties: Property[] = [...properties];
 
   if (propertyType) {
