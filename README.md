@@ -1,8 +1,8 @@
 # RealEstate:
 
 ### To run project: 
- 1.`npm i`
- 2.`npm start`
+ 1. `npm i`
+ 2. `npm start`
  
 ### To See: https://atvorch.github.io/RealEstate/
 
