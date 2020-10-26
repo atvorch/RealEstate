@@ -9,6 +9,7 @@ import * as Styled from "./styled";
 
 const connector = connect(
   (state: RootState) => ({
+    properties: properties.selectors.getProperties(state),
     filteredProperties: properties.selectors.getFilteredProperties(state),
     selectedPropertyId: properties.selectors.getSelectedPropertyId(state),
   }),
@@ -23,6 +24,7 @@ const DUBLIN_GEPOSITION = { lat: 53.35014, lng: -6.266155 };
 const DEFAULT_ZOOM = 12;
 
 export const Map: React.FC<ReduxProps> = ({
+  properties,
   filteredProperties,
   selectedPropertyId,
   setSelectedPropertyId,
@@ -39,7 +41,7 @@ export const Map: React.FC<ReduxProps> = ({
 
   return (
     <Styled.MapWrapper>
-      {!filteredProperties.length && (
+      {properties.length && !filteredProperties.length && (
         <Styled.MessageWrapper>
           There is no properties that fits your filters
         </Styled.MessageWrapper>
