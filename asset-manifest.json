@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/RealEstate/static/js/main.96fc7b38.chunk.js",
-    "main.js.map": "/RealEstate/static/js/main.96fc7b38.chunk.js.map",
+    "main.js": "/RealEstate/static/js/main.880425c2.chunk.js",
+    "main.js.map": "/RealEstate/static/js/main.880425c2.chunk.js.map",
     "runtime-main.js": "/RealEstate/static/js/runtime-main.6b59edcb.js",
     "runtime-main.js.map": "/RealEstate/static/js/runtime-main.6b59edcb.js.map",
     "static/js/2.4acd1881.chunk.js": "/RealEstate/static/js/2.4acd1881.chunk.js",
     "static/js/2.4acd1881.chunk.js.map": "/RealEstate/static/js/2.4acd1881.chunk.js.map",
     "index.html": "/RealEstate/index.html",
-    "precache-manifest.7ce83d3c1ec966bf7d875399e0ad0d91.js": "/RealEstate/precache-manifest.7ce83d3c1ec966bf7d875399e0ad0d91.js",
+    "precache-manifest.978d7926d8367b7cfb90b2437f052c4f.js": "/RealEstate/precache-manifest.978d7926d8367b7cfb90b2437f052c4f.js",
     "service-worker.js": "/RealEstate/service-worker.js",
     "static/js/2.4acd1881.chunk.js.LICENSE.txt": "/RealEstate/static/js/2.4acd1881.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6b59edcb.js",
     "static/js/2.4acd1881.chunk.js",
-    "static/js/main.96fc7b38.chunk.js"
+    "static/js/main.880425c2.chunk.js"
   ]
 }
