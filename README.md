@@ -1,6 +1,6 @@
 # RealEstate:
 
-### To run project: 
+### To run the project locally: 
  1. `npm i`
  2. `npm start`
  
