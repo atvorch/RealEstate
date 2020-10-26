@@ -1,13 +1,13 @@
 {
-  "name": "app",
+  "name": "real-estate",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://atvorch.github.io/RealEstate/.",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/google-map-react": "^2.1.0",
+    "@types/googlemaps": "^3.40.1",
     "@types/jest": "^24.9.1",
     "@types/lodash": "^4.14.162",
     "@types/node": "^12.12.69",
@@ -27,8 +27,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.0",
-    "typescript": "^3.7.5",
-    "@types/googlemaps": "^3.40.1"
+    "typescript": "^3.7.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,7 +38,9 @@
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app"
+    ]
   },
   "browserslist": {
     "production": [

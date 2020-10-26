@@ -20,4 +20,5 @@ export const Color = styled.div<{ color: string }>`
 `;
 export const ColorTitle = styled.span`
   cursor: default;
+  white-space: nowrap;
 `;

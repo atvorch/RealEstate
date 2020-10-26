@@ -1,24 +1,38 @@
+import device from "utils/devices";
 import styled from "styled-components";
 
 export const SelectPropertyMessage = styled.span`
   font-size: 20px;
-  margin-top: 28px;
+  margin-top: 10px;
+  @media ${device.desktop} {
+    margin-top: 28px;
+  }
 `;
 
 export const Wrapper = styled.article`
+  order: 1;
   display: flex;
   flex-direction: column;
-  width: 300px;
-  border: 1px dashed #3e88e469;
-  padding-right: 20px;
-  margin-right: 20px;
-  border-width: 0 2px 0 0;
+  box-sizing: border-box;
+  @media ${device.tablet} {
+    border: 1px dashed #3e88e469;
+    border-width: 0 2px 0 0;
+    padding-right: 20px;
+    margin-right: 20px;
+    margin: 0 20px 0 0;
+    padding: 0 20px 0 0;
+    order: initial;
+    width: 300px;
+    flex-shrink: 0;
+  }
 `;
 
 export const Title = styled.h1`
   cursor: default;
   color: #3e88e4;
-  margin: 0 0 83px;
+  @media ${device.desktop} {
+    margin: 0 0 92px;
+  }
 `;
 
 export const InfoTitle = styled.span`
@@ -30,6 +44,7 @@ export const InfoValue = styled.span`
   color: black;
   cursor: default;
   text-transform: capitalize;
+  font-size: 14px;
 `;
 
 export const Picture = styled.img`
