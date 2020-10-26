@@ -5,22 +5,7 @@ import GoogleMapReact from "google-map-react";
 import Marker from "components/Marker";
 import properties from "store/modules/properties";
 import { PROPERTY_COLORS, GOOGLE_MAPS_API_KEY } from "data/constants";
-import styled from "styled-components";
-import device from "utils/devices";
-
-export const MapWrapper = styled.div`
-  width: 100%;
-  height: 300px;
-  border: 1px dashed #3e88e469;
-  border-width: 2px 0 2px 0;
-  padding: 20px 0;
-  @media ${device.tablet} {
-    height: initial;
-    flex-grow: 1;
-    padding: 0;
-    border-width: 0;
-  }
-`;
+import * as Styled from "./styled";
 
 const connector = connect(
   (state: RootState) => ({
@@ -53,7 +38,12 @@ export const Map: React.FC<ReduxProps> = ({
   };
 
   return (
-    <MapWrapper>
+    <Styled.MapWrapper>
+      {!filteredProperties.length && (
+        <Styled.MessageWrapper>
+          There is no properties that fits your filters
+        </Styled.MessageWrapper>
+      )}
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
         defaultCenter={DUBLIN_GEPOSITION}
@@ -76,7 +66,7 @@ export const Map: React.FC<ReduxProps> = ({
             })
           : null}
       </GoogleMapReact>
-    </MapWrapper>
+    </Styled.MapWrapper>
   );
 };
 
