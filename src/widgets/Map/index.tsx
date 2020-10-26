@@ -41,11 +41,11 @@ export const Map: React.FC<ReduxProps> = ({
 
   return (
     <Styled.MapWrapper>
-      {properties.length && !filteredProperties.length && (
-        <Styled.MessageWrapper>
-          There is no properties that fits your filters
-        </Styled.MessageWrapper>
-      )}
+      <Styled.MessageWrapper
+        isVisible={!!(properties.length && !filteredProperties.length)}
+      >
+        There is no properties that fits your filters
+      </Styled.MessageWrapper>
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
         defaultCenter={DUBLIN_GEPOSITION}

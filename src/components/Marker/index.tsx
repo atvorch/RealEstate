@@ -24,10 +24,9 @@ const MarkerUI = styled.div<{ color: string; selected?: boolean }>`
   cursor: pointer;
   transition: 0.5s;
   &:hover {
-    transform: scale(1.2);
+    box-shadow: 0 0 6px 6px #2fd4c9;
   }
-  box-shadow: ${(props) =>
-    props.selected ? "0 0 11px 10px #2fd4c9;" : "none"};
+  box-shadow: ${(props) => (props.selected ? "0 0 6px 6px #2fd4c9;" : "none")};
 `;
 
 export const Marker: React.FC<OwnProps> = ({

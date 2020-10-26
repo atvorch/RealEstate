@@ -4,17 +4,17 @@ import device from "utils/devices";
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
+  margin: 20px;
   box-sizing: border-box;
   flex-direction: column;
-
+  flex-grow: 1;
+  width: calc(100% - 40px);
   @media ${device.tablet} {
     flex-direction: row;
   }
   @media ${device.desktop} {
-    padding: 20px 20px 20px 50px;
+    width: calc(100% - 70px);
+    margin: 20px 20px 20px 50px;
   }
 `;
 

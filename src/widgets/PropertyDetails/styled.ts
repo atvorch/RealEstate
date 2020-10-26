@@ -4,6 +4,8 @@ import styled from "styled-components";
 export const SelectPropertyMessage = styled.span`
   font-size: 20px;
   margin-top: 10px;
+  cursor: default;
+
   @media ${device.desktop} {
     margin-top: 28px;
   }
