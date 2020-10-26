@@ -19,8 +19,7 @@ const connector = connect(
 );
 
 type ReduxProps = ConnectedProps<typeof connector>;
-
-const DUBLIN_GEPOSITION = { lat: 53.35014, lng: -6.266155 };
+const DEFAULT_CENTER = { lat: -6.131429, lng: -6.26615527 };
 const DEFAULT_ZOOM = 12;
 
 export const Map: React.FC<ReduxProps> = ({
@@ -48,7 +47,7 @@ export const Map: React.FC<ReduxProps> = ({
       </Styled.MessageWrapper>
       <GoogleMapReact
         bootstrapURLKeys={{ key: GOOGLE_MAPS_API_KEY }}
-        defaultCenter={DUBLIN_GEPOSITION}
+        defaultCenter={DEFAULT_CENTER}
         defaultZoom={DEFAULT_ZOOM}
         onGoogleApiLoaded={({ map, maps }) => googleApiOnLoadHandler(map, maps)}
       >
