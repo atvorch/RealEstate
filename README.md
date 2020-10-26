@@ -6,7 +6,7 @@
  
 ### To See: https://atvorch.github.io/RealEstate/
 
-### What I haven't done but really wanted:
+###What I wanted to do but had no time for: :
 
 1. Properties maps clustering for properties that located very close to each other
 2. Live Change of Charts
