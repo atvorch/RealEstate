@@ -8,6 +8,7 @@ export const MapWrapper = styled.div`
   border-width: 2px 0 2px 0;
   padding: 20px 0;
   position: relative;
+  flex-shrink: 0;
 
   @media ${device.tablet} {
     height: initial;

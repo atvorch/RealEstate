@@ -16,6 +16,8 @@ export const Wrapper = styled.article`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  flex-shrink: 0;
+
   @media ${device.tablet} {
     border: 1px dashed #3e88e469;
     border-width: 0 2px 0 0;
@@ -25,7 +27,6 @@ export const Wrapper = styled.article`
     padding: 0 20px 0 0;
     order: initial;
     width: 300px;
-    flex-shrink: 0;
   }
 `;
 
